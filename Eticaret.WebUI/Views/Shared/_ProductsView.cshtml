@@ -1,0 +1,36 @@
+﻿@model Product
+
+
+<div class="">
+    <div class="card h-100">
+        <!-- Sale badge-->
+        <div class="badge position-absolute" style="top: 0.5rem; right: 0.5rem">
+            <form asp-action="Add" asp-controller="Favorites">
+                <input type="hidden" value="@Model.ID" name="ProductID"/>
+                <button class="btn btn-transparent" type="submit" style="box-shadow: none"><i class="bi-heart"></i></button>
+        </form></div>
+        <!-- Product image-->
+        <a href="/Products/Details/@Model.ID">
+
+            <img class="card-img-top" src="/img/products/@Model.Image" alt="@Model.Name">
+
+        </a>
+        <!-- Product details-->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">@Model.Name</h5>
+                <!-- Product price-->
+                ₺ @Model.Price.ToString("N2")
+            </div>
+        </div>
+        <!-- Product actions-->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <form action="/Cart/Add">
+               <input type="hidden" name="ProductID" value="@Model.ID"/>
+                <div class="text-center"><button class="btn btn-outline-dark mt-auto" type="submit">Sepete Ekle</button></div>
+
+            </form>
+        </div>
+    </div>
+</div>

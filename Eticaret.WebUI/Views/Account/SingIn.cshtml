@@ -1,0 +1,83 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Giriş";
+    Layout = "_AccountLayout";
+}
+<style>
+
+    html,
+    body {
+        height: 100%;
+    }
+
+   
+
+    .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+    }
+
+        .form-signin .checkbox {
+            font-weight: 400;
+        }
+
+        .form-signin .form-floating:focus-within {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+
+</style>
+
+<main class="form-signin w-100 m-auto shadow rounded my-5">
+    <form asp-action="SingIn">
+
+        <h1 class="h3 mb-3 fw-normal">Üye Girişi</h1>
+
+        <div class="form-floating">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="Email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+            <label for="floatingInput">Email</label>
+            <span asp-validation-for="Email" class="text-danger"></span>
+
+        </div>
+        <div class="form-floating">
+            <input asp-for="Password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Şifre</label>
+            <span asp-validation-for="Password" class="text-danger"></span>
+
+        </div>
+
+        <div class="checkbox mb-3">
+            <label>
+                <input asp-for="RememberMe" type="checkbox"> Beni Hatırla
+            </label>
+        </div>
+        <input type="hidden" asp-for="ReturnUrl" value="@Context.Request.Query["ReturnUrl"]" />
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Giriş Yap</button>
+    </form>
+    <div class="row">
+        <div class="col-12 my-3">
+            <a href="/Account/SingUp" class="w-100 btn btn-lg btn-info">Üye Ol</a>
+        </div>
+        <div class="col-12">
+            <a href="/Account/PasswordRenew" class="w-100 btn btn-lg btn-warning">Şifremi Unuttum</a>
+        </div>
+    </div>
+</main>
+<hr />
+<p class="alert alert-warning text-center">Sipariş Oluşturmak ve Kampanyalardan yararlanmak için lütfen sisteme giriş yapın.</p>
